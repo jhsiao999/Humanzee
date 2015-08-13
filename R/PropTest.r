@@ -5,7 +5,6 @@
 #' 
 #' @param prop1 sample proportion
 #' @param prop2 sample proportion
-#' @param propAll 
 #' @param N1 Sample size of prop1
 #' @param N2 Sample size of prop2
 #'

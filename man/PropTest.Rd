@@ -14,8 +14,6 @@ PropTest(prop1, prop2, N1, N2)
 \item{N1}{Sample size of prop1}
 
 \item{N2}{Sample size of prop2}
-
-\item{propAll}{}
 }
 \description{
 This function compares two indepenent sample proportions.
