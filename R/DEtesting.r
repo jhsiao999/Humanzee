@@ -12,8 +12,8 @@
 #' @export
 #' 
 #' @examples
-# load(file.path(rdadir,"eSetRRP.rda"))
-# massRes = testDE(eSetRRPall,seqData="protein",species=c("human","chimp"))$massRes
+#' load(file.path(rdadir,"eSetRRP.rda"))
+#' massRes = testDE(eSetRRPall,seqData="protein",species=c("human","chimp"))$massRes
 testDE <- function(eSet,seqData,species) {
 # eSet=eSetRRP.Q.log2[which(riboRes.Q$qval<.01),];seqData="rna";species=c("human","chimp")
 # eSet=eSetRRP.Q.log2;seqData="rna";species=c("human","chimp")
