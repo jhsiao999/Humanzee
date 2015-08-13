@@ -1,12 +1,23 @@
-# # Differential expression analysis of measurements
-# # Example
+#' Inter-species divergence likelihood ratio test
+#' 
+#' This function tests for divergence between two species
+#' in one molecular phenotype at a time. 
+#' 
+#' @param eSet
+#' @param seqData 
+#' @param species
+#'
+#' @keywords Humanzee
+#' 
+#' @export
+#' 
+#' @examples
 # load(file.path(rdadir,"eSetRRP.rda"))
 # massRes = testDE(eSetRRPall,seqData="protein",species=c("human","chimp"))$massRes
 testDE <- function(eSet,seqData,species) {
 # eSet=eSetRRP.Q.log2[which(riboRes.Q$qval<.01),];seqData="rna";species=c("human","chimp")
 # eSet=eSetRRP.Q.log2;seqData="rna";species=c("human","chimp")
 
-#  require(BiocParallel)
   require(lmtest)
   require(qvalue)
 
@@ -15,7 +26,6 @@ testDE <- function(eSet,seqData,species) {
   emat = t(exprs(submat))
   
   res = lapply(1:NCOL(emat),function(i) {
-# i=1
     tmp=tryCatch(fit <- fit.lm(emat[,i],species),
                     error=function(c) list("error", conditionMessage(c)))
     if (length(tmp)==2) return(rep(NA,4))
