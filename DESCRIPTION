@@ -1,0 +1,15 @@
+Package: Humanzee
+Title: Gilad lab’s tools for comparative analysis of gene expression data
+Version: 0.0.0.9000
+Authors@R: c(person("Chiaowen Joyce”, “Hsiao",role=c("aut","cre")
+  , email="joyce.hsiao1@gmail.com")
+  , person("Sidney”, “Wang",role="aut", email="siddisis@gmail.com")
+  , person("Yoav”, “Gilad", role="aut", email="gilad@uchicago.edu") )
+Description: This package includes a suite of tools used to study 
+  inter-species variations across multiple molecular phenotypes, 
+  using RNAseq, Ribosome profiling, and quantitative mass spectrometry 
+  data. 
+Depends: R (>= 3.2.1)
+License: GPL (>=2)
+LazyData: true
+Encoding: ASCII
