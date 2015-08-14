@@ -33,6 +33,7 @@ plot_divergence_scatter <- function(xy,
                             lwd_vline = .5,
                             cex.axis = .3, cex.lab = .3,
                             xlim = c(-6, 10), ylim = c(-6, 10) ) {
+    require(scales)
     par( mar = c(2.2, 2, 1, .5), mgp = c(.7, .1, 0) )
     plot( xy, pch = "", 
           axes = F, ylim = ylim, xlim = xlim, xlab = "", ylab = "" )
