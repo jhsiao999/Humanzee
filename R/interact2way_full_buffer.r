@@ -21,9 +21,7 @@ interact2way_full_buffer <- function(eSet) {
   fNames = featureNames(eSet)
   
   require(nlme)
-#  require(parallel)
-  require(contrast)
-#   gls.res = lapply(1:10, function(i) {
+
   gls.res = lapply(1:length(fNames), function(i) {
     mat1 = eSet[featureNames(eSet)==fNames[i],]
     mat1aov.temp = data.frame(cov=c(t(exprs(mat1))),seqData=mat1$seqData,
@@ -60,7 +58,7 @@ interact2way_full_buffer <- function(eSet) {
   })
   pval = do.call(rbind,gls.res)  
 
-  int.qval = get.qval(pval$LR.pval)
+  int.qval = get_qval(pval$LR.pval)
   
   return(data.frame(ENSGID=fNames,int.pval=pval$LR.pval,int.qval=int.qval))
 }
