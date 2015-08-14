@@ -9,7 +9,7 @@ Description: This package includes a suite of tools used to study
   inter-species variations across multiple molecular phenotypes, 
   using RNAseq, Ribosome profiling, and quantitative mass spectrometry 
   data. 
-Depends: R (>= 3.2.1)
+Depends: R (>= 3.1.1)
 License: GPL (>=2)
 LazyData: true
 Encoding: ASCII
