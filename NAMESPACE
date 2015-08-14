@@ -2,5 +2,7 @@
 
 export(PropTest)
 export(fisherCorrTest)
-export(interact2way_full_buffer)
+export(fit_lm)
+export(get_qval)
+export(interact2way)
 export(testDE)
