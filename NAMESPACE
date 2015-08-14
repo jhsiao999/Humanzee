@@ -2,4 +2,5 @@
 
 export(PropTest)
 export(fisherCorrTest)
+export(interact2way_full_buffer)
 export(testDE)
