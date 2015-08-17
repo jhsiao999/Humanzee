@@ -23,7 +23,7 @@ testDE <- function(eSet,seqData,species) {
   emat = t(exprs(submat))
   
   res = lapply(1:NCOL(emat),function(i) {
-    tmp=tryCatch(fit <- fit.lm(emat[,i],species),
+    tmp=tryCatch(fit <- fit_lm(emat[,i],species),
                     error=function(c) list("error", conditionMessage(c)))
     if (length(tmp)==2) return(rep(NA,4))
     if (length(tmp)==4) return(data.frame(coef=tmp$coef,se=tmp$se,t=tmp$t,pval=tmp$pval))
