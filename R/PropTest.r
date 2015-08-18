@@ -18,6 +18,6 @@
 PropTest <- function(prop1, prop2, N1, N2) {
   prop_all <- (prop1*N1 + prop2*N2)/(N1 + N2)
   z <- (prop1 - prop2)/ sqrt( prop_all*(1-prop_all)*(1/N1 + 1/N2) )
-  pval <- 2*pnorm(z)
+  pval <- 2*(1-pnorm(z))
   list(z = z, pval = pval)
 }
