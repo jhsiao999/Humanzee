@@ -41,7 +41,7 @@ gls.series_multiple_designs <- function (M,
     }
 
     if (!is.null(cov_matrix)) {
-        beta <- ncol(design) + 1        
+        nbeta <- ncol(design) + 1        
     } else {
         nbeta <- ncol(design)
     }
