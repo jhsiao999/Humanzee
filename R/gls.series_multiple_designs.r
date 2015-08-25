@@ -42,10 +42,11 @@ gls.series_multiple_designs <- function (M,
 
     if (!is.null(cov_matrix)) {
         nbeta <- ncol(design) + 1        
+        coef.names <- c(colnames(design), "cov")
     } else {
         nbeta <- ncol(design)
+        coef.names <- colnames(design)
     }
-#    coef.names <- colnames(design)
     
     if (is.null(block)) {
         if (ndups < 2) {
