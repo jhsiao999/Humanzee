@@ -22,8 +22,12 @@ gls.series_multiple_designs <- function (M,
           cov_matrix = NULL, design = NULL, ndups = 1, 
           spacing = 1, block = NULL, 
           correlation = NULL, weights = NULL, ...) {
+
     M <- as.matrix(M)
+
+    # narrays: number of samples
     narrays <- ncol(M)
+ 
     if (is.null(design)) 
         design <- matrix(1, narrays, 1)
     design <- as.matrix(design)
@@ -165,9 +169,10 @@ gls.series_multiple_designs <- function (M,
     cov.coef <- chol2inv(QR$qr, size = QR$rank)
     est <- QR$pivot[1:QR$rank]
     dimnames(cov.coef) <- list(coef.names[est], coef.names[est])
-    
+
     list(coefficients = beta, stdev.unscaled = stdev.unscaled, 
          sigma = sigma, df.residual = df.residual, ndups = ndups, 
          spacing = spacing, block = block, correlation = correlation, 
-         cov.coefficients = cov.coef, pivot = QR$pivot, rank = QR$rank)
+         cov.coefficients = cov.coef, pivot = QR$pivot, rank = QR$rank,
+         design = design)
 }
