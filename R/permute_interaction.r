@@ -18,11 +18,10 @@ permute_interact <- function(eset_full, datatypes, permute_labels) {
   eset_sub <-   eset_full[ ,eset_full$seqData != exclude_datatypes
                            & eset_full$species != "rhesus"]
   
-  
   null_interact <- lapply(1:n_permute, function(each_null) {
-    emat1 <- exprs(eset_sub)[ permute_labels[[each_null]], 
+    emat1 <- exprs(eset_sub)[ permute_labels[[each_null]][,order_datatypes[1]], 
                               eset_sub$seqData == datatypes[1] ]
-    emat2 <- exprs(eset_sub)[ permute_labels[[each_null]][,2], 
+    emat2 <- exprs(eset_sub)[ permute_labels[[each_null]][,order_datatypes[2]], 
                               eset_sub$seqData == datatypes[2] ]
     emat_per_null <- cbind(emat1, emat2)
     eset_per_null <- ExpressionSet(assayData = as.matrix(emat_per_null),
