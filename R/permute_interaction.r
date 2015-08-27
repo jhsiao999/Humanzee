@@ -11,12 +11,13 @@
 
 permute_interact <- function(eset_full, datatypes, permute_labels) {
   
-  eset_sub <-   eset_full[ ,eset_full$seqData != exclude_datatypes
-                           & eset_full$species != "rhesus"]
-  
   n_permute <- length(permute_labels)
   order_datatypes <- match(datatypes, c("rna", "ribo", "protein"))
   exclude_datatypes <- c("rna", "ribo", "protein")[setdiff(c(1:3), order_datatypes)]
+
+  eset_sub <-   eset_full[ ,eset_full$seqData != exclude_datatypes
+                           & eset_full$species != "rhesus"]
+  
   
   null_interact <- lapply(1:n_permute, function(each_null) {
     emat1 <- exprs(eset_sub)[ permute_labels[[each_null]], 
