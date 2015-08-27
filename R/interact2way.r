@@ -1,4 +1,4 @@
-#' Interaction model for comparing inter-speciees divergence
+#' Interaction model for comparing inter-species divergence
 #' 
 #' This function is a wrapper for an interaction model testing
 #' inter-species differences in divergence between molecular 

@@ -2,7 +2,7 @@
 % Please edit documentation in R/interact2way.r
 \name{interact2way}
 \alias{interact2way}
-\title{Interaction model for comparing inter-speciees divergence}
+\title{Interaction model for comparing inter-species divergence}
 \usage{
 interact2way(eSet)
 }
