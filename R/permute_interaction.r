@@ -27,8 +27,8 @@ permute_interact <- function(eset_full, datatypes, permute_labels) {
     eset_per_null <- ExpressionSet(assayData = as.matrix(emat_per_null),
                                    phenoData = phenoData(eset_sub),
                                    experimentData = experimentData(eset_sub))
-    featureData(eset_sub) = featureData(eset_sub)
-    return(interact2way(eset_sub) )
+    featureData(eset_per_null) = featureData(eset_sub)
+    return(interact2way(eset_per_null) )
   })
   null_interact
 }
