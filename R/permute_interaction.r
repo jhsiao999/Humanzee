@@ -24,10 +24,9 @@ permute_interact <- function(eset_full, datatypes, permute_labels) {
     emat2 <- exprs(eset_sub)[ permute_labels[[each_null]][,order_datatypes[2]], 
                               eset_sub$seqData == datatypes[2] ]
     emat_per_null <- cbind(emat1, emat2)
-    eset_per_null <- ExpressionSet(assayData = as.matrix(emat_per_null),
-                                   phenoData = phenoData(eset_sub),
-                                   experimentData = experimentData(eset_sub))
-    featureData(eset_per_null) = featureData(eset_sub)
+    eset_per_null <- ExpressionSet(assayData = as.matrix(emat_per_null))
+    phenoData(eset_per_null) <- phenoData(eset_sub)
+    featureData(eset_per_null) <- featureData(eset_sub)
     return(interact2way(eset_per_null) )
   })
   null_interact
