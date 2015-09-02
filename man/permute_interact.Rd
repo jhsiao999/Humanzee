@@ -4,7 +4,8 @@
 \alias{permute_interact}
 \title{Wapper function for running interaction model on null data sts}
 \usage{
-permute_interact(eset_full, datatypes, permute_labels, parallel = FALSE)
+permute_interact(eset_full, datatypes, permute_labels, parallel = FALSE,
+  ncores = 4)
 }
 \arguments{
 \item{eset_full}{}

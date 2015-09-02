@@ -10,7 +10,7 @@
 #' permute_interact()
 
 permute_interact <- function(eset_full, datatypes, permute_labels,
-                             parallel = FALSE) {
+                             parallel = FALSE, ncores = 4) {
   
   n_permute <- length(permute_labels)
   order_datatypes <- match(datatypes, c("rna", "ribo", "protein"))
@@ -34,7 +34,7 @@ permute_interact <- function(eset_full, datatypes, permute_labels,
   }
   if (parallel == TRUE) {
       require(doParallel)
-      registerDoParallel(cores=4)
+      registerDoParallel(cores=ncores)
       null_interact <- foreach(each_null = 1:n_permute) %dopar% {
         emat1 <- exprs(eset_sub)[ permute_labels[[each_null]][,order_datatypes[1]], 
                                   eset_sub$seqData == datatypes[1] ]
