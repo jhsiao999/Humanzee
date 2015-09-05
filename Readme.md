@@ -4,10 +4,9 @@
 
 [Humanzee](https://github.com/jhsiao999/Humanzee) is an [R](http://www.r-project.org) package of tools for
 statistical analysis, data visualization, and data preprocessing for the projects in the Gilad lab at 
-the [Universit of Chicago](https://www.uchicago.edu)
-interactive charts for QTL data. \[[website](http://)\]
+the [Universit of Chicago](https://www.uchicago.edu).
 
-For example usage in our projects, see the [Humanzee website](http://webaddress).
+For example usage in our projects, see the Humanzee website (upcoming).
 
 #### Installation
 
