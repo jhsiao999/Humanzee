@@ -1,10 +1,9 @@
-### Humanzee: Gilad lab's tooks for comparative analysis of genomics data
-
-[Gilad lab at the University of Chicago](http://giladlab.uchicago.edu/)
+### Humanzee: Tools for the statistical analysis of genomics data
 
 [Humanzee](https://github.com/jhsiao999/Humanzee) is an [R](http://www.r-project.org) package of tools for
-statistical analysis, data visualization, and data preprocessing for the projects in the Gilad lab at 
-the [Universit of Chicago](https://www.uchicago.edu).
+statistical analysis, data visualization, and data preprocessing of genomics data. Most tools were 
+inspired or developed for the [Gilad lab](http://giladlab.uchicago.edu) at the [University of Chicago](https://www.uchicago.edu).
+
 
 For example usage in our projects, see the Humanzee website (upcoming).
 

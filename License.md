@@ -1,4 +1,4 @@
-Copyright (C) 2015 Chiaowen Joyce Hsiao, Sidney Wang, and Yoav Gilad
+Copyright (C) 2015 Chiaowen Joyce Hsiao.
 
 Code is released under the GPLv3 license.
 
