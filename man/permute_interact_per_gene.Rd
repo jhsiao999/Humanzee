@@ -5,7 +5,7 @@
 \title{Permutation-based test for per gene interaction models}
 \usage{
 permute_interact_per_gene(eset_full, datatypes, permute_phenotype, n_permute,
-  parallel = FALSE, ncores = 4)
+  ncores = 4)
 }
 \arguments{
 \item{eset_full}{}

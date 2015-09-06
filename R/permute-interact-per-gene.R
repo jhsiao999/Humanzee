@@ -20,7 +20,7 @@
 
 permute_interact_per_gene <- 
 
-  function (eset_full, datatypes, permute_phenotype, n_permute, parallel = FALSE, 
+  function (eset_full, datatypes, permute_phenotype, n_permute, 
         ncores = 4) 
 {
   # Set up parallel computing environment
@@ -58,16 +58,17 @@ permute_interact_per_gene <-
   }      
 
   if (permute_phenotype_order_label == "seqData") {
+      pheno_labels <- unique(pData(eset_sub)$seqData)
       null_interact <- foreach(each_null = 1:n_permute) %dopar% {
                                 
                                 n_samples_per_genes <- dim(pData(eset_sub))[1]
-                                emat_rna <- emat[, pData(eset_sub)$seqData == "rna"]
-                                emat_ribo <- emat[, pData(eset_sub)$seqData == "ribo"]
+                                emat_1 <- emat[, pData(eset_sub)$seqData == pheno_labels[1]]
+                                emat_2 <- emat[, pData(eset_sub)$seqData == pheno_labels[2]]
                                 
                                 emat_per_permute <- t( sapply(1:n_genes, function(i) {
                                   sample_labels_1 <- sample(1: (n_samples_per_genes/2) )
                                   sample_labels_2 <- sample(1: (n_samples_per_genes/2) )
-                                  cbind(emat_rna[i,sample_labels_1], emat_ribo[i,sample_labels_2])
+                                  cbind(emat_1[i,sample_labels_1], emat_2[i,sample_labels_2])
                                 } ) )
                                 dimnames(emat_per_permute)[2] <- NULL
                                 
