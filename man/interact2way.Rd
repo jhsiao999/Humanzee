@@ -18,6 +18,8 @@ of the difference between inter-species divergence.
 }
 \examples{
 interact2way()
+eSet <- eSetRRP.RP.Q.log2[ ,eSetRRP.RP.Q.log2$seqData!="protein" &
+                            eSetRRP.RP.Q.log2$species!="rhesus"]
 }
 \keyword{Humanzee}
 
