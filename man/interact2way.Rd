@@ -4,7 +4,7 @@
 \alias{interact2way}
 \title{Interaction model for comparing inter-species divergence}
 \usage{
-interact2way(eSet)
+interact2way(eSet, coef = FALSE)
 }
 \arguments{
 \item{eSet}{data set contains the two molecular phenotypes}

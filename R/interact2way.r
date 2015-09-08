@@ -17,7 +17,7 @@
 #' eSet <- eSetRRP.RP.Q.log2[ ,eSetRRP.RP.Q.log2$seqData!="protein" & 
 #'                             eSetRRP.RP.Q.log2$species!="rhesus"]
 
-interact2way <- function(eSet) {
+interact2way <- function(eSet, coef = FALSE) {
 
   fNames <- featureNames(eSet)
   
@@ -59,8 +59,17 @@ interact2way <- function(eSet) {
         # Likelihood ratio test
             aov <- anova(fit_null_try, fit_interact_try)
             res <- data.frame( LRatio = aov[2, "L.Ratio"],
-                               LR_pval = aov[2, "p-value"] )
-        } 
+                               LR_pval = aov[2, "p-value"])
+            
+            if(coef==TRUE) {
+              coef_table <- summary(fit_interact_try)$tTable
+              coef_res <- c(coef_table[2, ], coef_table[3, ], coef_table[4, ])
+              names(coef_res) <- c(paste(rownames(coef_table)[2], colnames(coef_table), sep = "_"),
+                                   paste(rownames(coef_table)[3], colnames(coef_table), sep = "_"),
+                                   paste(rownames(coef_table)[4], colnames(coef_table), sep = "_") )
+              res <- cbind(res, coef_res)
+            }
+          } 
     
     return(res) 
     }
