@@ -5,10 +5,10 @@
 #' lables across species and/or across technology type (RNA, Ribo, Protein)
 #' to compute empirical p-values of interaction models.
 #'
-#' @param eset_full
-#' @param datatypes
-#' @param permute_phenotypes
-#' @param n_permute
+#' @param eset_full 
+#' @param datatypes data types included in the analysis
+#' @param permute_phenotypes phenotypes that we would like to shuffle labels between/within
+#' @param n_permute number of permutation
 #' @param ncores
 #' 
 #' @keywords Humanzee
@@ -40,6 +40,7 @@ permute_interact_per_gene <-
   permute_phenotype_order <- which(c("seqData", "species") %in% permute_phenotype)
   permute_phenotype_order_label <- c("seqData", "species")[permute_phenotype_order]
   
+  # Permute across species and sequencing data type
   if ( length(permute_phenotype_order_label) == 2)  {
       null_interact <- foreach(each_null = 1:n_permute) %dopar% {
                                 n_samples_per_genes <- dim(pData(eset_sub))[1]
@@ -57,14 +58,18 @@ permute_interact_per_gene <-
       return(null_interact)
   }      
 
+  # Shuffle sample labels within each data type
   if (permute_phenotype_order_label == "seqData") {
       pheno_labels <- unique(pData(eset_sub)$seqData)
       null_interact <- foreach(each_null = 1:n_permute) %dopar% {
                                 
                                 n_samples_per_genes <- dim(pData(eset_sub))[1]
+                                
+                                # Split the data into parts for each phenotype
                                 emat_1 <- emat[, pData(eset_sub)$seqData == pheno_labels[1]]
                                 emat_2 <- emat[, pData(eset_sub)$seqData == pheno_labels[2]]
                                 
+                                # Create permuted data set
                                 emat_per_permute <- t( sapply(1:n_genes, function(i) {
                                   sample_labels_1 <- sample(1: (n_samples_per_genes/2) )
                                   sample_labels_2 <- sample(1: (n_samples_per_genes/2) )
