@@ -10,13 +10,13 @@ permute_interact_per_gene(eset_full, datatypes, permute_phenotype, n_permute,
 \arguments{
 \item{eset_full}{}
 
-\item{datatypes}{}
+\item{datatypes}{data types included in the analysis}
 
-\item{n_permute}{}
+\item{n_permute}{number of permutation}
 
 \item{ncores}{}
 
-\item{permute_phenotypes}{}
+\item{permute_phenotypes}{phenotypes that we would like to shuffle labels between/within}
 }
 \description{
 Written for Sidneys' paper on inter-species comparsions of
