@@ -26,7 +26,7 @@ demo_data <- function(molecules_cv,
   list(molecules_cv = molecules_cv,
        anno_single = anno_single,
        molecules_single_collision = molecules_single_collision,
-       per_person = per_peson)
+       per_person = per_person)
 }
 
 
