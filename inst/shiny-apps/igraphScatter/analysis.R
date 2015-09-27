@@ -1,9 +1,12 @@
-# Import data and prepare objects for shiny app
-# Data already cleaned. Lowly expressed or highly expressed genes were removed.
-# save(anno_single, molecules_single_collision, molecules_cv,
-#       file = "../data/igraphScatter-demo.rda")
-
+#' Import data and prepare objects for shiny app
+#'
 #' @export
+#'
+#' @examples
+#' Data already cleaned. Lowly expressed or highly expressed genes were removed.
+#' save(anno_single, molecules_single_collision, molecules_cv,
+#'       file = "../data/igraphScatter-demo.rda")
+
 demo_data <- function(molecules_cv,
                           anno_single, molecules_single_collision,
                           per_person) {
