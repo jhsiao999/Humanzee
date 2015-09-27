@@ -1,5 +1,3 @@
-source("analysis.R")
-
 # Define input and output of each plot
 library(shiny)
 
