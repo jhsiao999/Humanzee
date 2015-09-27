@@ -3,7 +3,8 @@
 # save(anno_single, molecules_single_collision, molecules_cv,
 #       file = "../data/igraphScatter-demo.rda")
 
-igraphScatter <- function(molecules_cv,
+#' @export
+demo_data <- function(molecules_cv,
                           anno_single, molecules_single_collision,
                           per_person) {
 
