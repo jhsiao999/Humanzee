@@ -1,3 +1,5 @@
+#' @export
+
 voom_NA <- function (counts, design = NULL, lib.size = NULL, normalize.method = "none", 
           plot = FALSE, span = 0.5, ...) 
 {
