@@ -1,8 +1,8 @@
 Package: Humanzee
+Maintainer: Chiaowen Joyce Hsiao <joyce.hsiao1@gmail.com>
 Title: Tools for statistical analysis of genomics data
 Version: 0.1.0
-Authors@R: c(person("Chiaowen Joyce”, “Hsiao",role=c("aut","cre")
-  , email="joyce.hsiao1@gmail.com"))
+Authors: Chiaowen Joyce Hsiao
 Description: This package includes a suite of tools that were mainly 
   developed for the comparative analysis of genomcis data
   in the Gilad lab at the University of Chicago.
