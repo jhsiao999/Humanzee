@@ -10,6 +10,9 @@
 #'        Default: pval_cutoff = .01.
 #' @return hg_over: lists of enrichment test results, each one is a GOHyperGResult 
 #'        instance of the GOstats package.
+#' 
+#' @export
+#' 
 #' @examples
 #' GOtest()
 
