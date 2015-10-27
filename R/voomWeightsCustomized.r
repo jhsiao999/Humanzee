@@ -17,7 +17,7 @@ voomWeightsCustomized <- function(log2counts, lib.size = NULL, design, is.cpm = 
   }
 
   if (is.cpm == TRUE) {
-    fit <- lmFit(log2cpm, design)
+    fit <- lmFit(log2counts, design)
     xx <- fit$Amean + mean(log2(lib.size + 1)) - log2(1e+06)
     yy <- sqrt(fit$sigma)
     l <- lowess(xx, yy, f = .5)
