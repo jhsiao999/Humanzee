@@ -56,12 +56,11 @@ function (M, design = NULL, ndups = 1, spacing = 1,
   Z <- matrix(block, narrays, nblocks) == matrix(ub, narrays,
                                                  nblocks, byrow = TRUE)
 
-  # Prepare variance-covariance matrix for the randome effect  
+  # Prepare variance-covariance matrix for the randome effect
   if (length(correlation) == 1) {
       correlation <- rep(correlation, dim(M)[1])
   }
 
-#  diag(cormatrix) <- 1
   ngenes <- nrow(M)
   stdev.unscaled <- matrix(NA, ngenes, nbeta, dimnames = list(rownames(M),
                                                               coef.names))
@@ -76,6 +75,7 @@ function (M, design = NULL, ndups = 1, spacing = 1,
     y <- y[o]
     n <- length(y)
     cormatrix <- Z %*% (correlation[i] * t(Z))
+    diag(cormatrix) <- 1
     if (n > 0) {
       X <- design[o, , drop = FALSE]
       V <- cormatrix[o, o]
@@ -106,10 +106,10 @@ function (M, design = NULL, ndups = 1, spacing = 1,
   }
 
 #  Below computes variance-covariance matrix for the regression
-#  coeffcients for the entire set of genes altogether, 
+#  coeffcients for the entire set of genes altogether,
 #  under the scenaior of a single correlation for the random effecs
 #  across genes
-# 
+#
 #  cholV <- chol(cormatrix)
 #  QR <- qr(backsolve(cholV, design, transpose = TRUE))
 #  cov.coef <- chol2inv(QR$qr, size = QR$rank)
@@ -118,7 +118,7 @@ function (M, design = NULL, ndups = 1, spacing = 1,
 
   return(
     list(coefficients = beta, stdev.unscaled = stdev.unscaled,
-       sigma = sigma, df.residual = df.residual, 
+       sigma = sigma, df.residual = df.residual,
        block = block, correlation = correlation,
        residuals = do.call(rbind, residuals) ) )
 }
