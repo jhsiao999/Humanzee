@@ -61,11 +61,11 @@ function (M, design = NULL, ndups = 1, spacing = 1,
       correlation <- rep(correlation, dim(M)[1])
   }
 
-  diag(cormatrix) <- 1
+#  diag(cormatrix) <- 1
   ngenes <- nrow(M)
   stdev.unscaled <- matrix(NA, ngenes, nbeta, dimnames = list(rownames(M),
                                                               coef.names))
-  # Estimate for one gene at a time
+  # Compute estimates one gene at a time
   beta <- stdev.unscaled
   sigma <- rep(NA, ngenes)
   df.residual <- rep(0, ngenes)
