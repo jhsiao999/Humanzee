@@ -3,6 +3,7 @@
 export(GOtest)
 export(PropTest)
 export(bootstrap_cells)
+export(bootstrap_cv_test)
 export(compute_cv)
 export(demo_data)
 export(fisherCorrTest)
