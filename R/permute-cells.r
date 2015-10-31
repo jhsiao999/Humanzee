@@ -5,7 +5,6 @@
 #' @param num_permute number of permuted samples
 #'
 #' @export
-#'
 #' @examples
 #' permuate_cells()
 permute_cells <- function(log2counts, grouping_vector, num_permute) {

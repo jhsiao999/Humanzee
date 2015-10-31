@@ -8,7 +8,6 @@
 #' @keywords Humanzee
 #' 
 #' @export
-#'
 #' @examples 
 #' M = phos_data
 #' cov_matrix = protein_pheno_data

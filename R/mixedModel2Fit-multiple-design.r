@@ -5,14 +5,13 @@
 #' for each gene (row) of the input data matrix.
 #'
 #' 
-#' @param design
-#' @param block
-#' @param yy
+#' @param design Design matrix.
+#' @param block Phentype for the blocking factor (vector).
+#' @param yy Gene (feature) by sample matrix.
 #'
 #' @keywords Humanzee
 #' 
 #' @export
-#' 
 #' @examples
 #' mixedModel2Fit_multiple_design()
 #' data_matrix <- pheno_data

@@ -15,7 +15,8 @@ plot_divergence_scatter(xy, ind_points1 = NULL, ind_points2 = NULL, xlab,
   ylim = c(-6, 10))
 }
 \arguments{
-\item{int_points1}{}
+\item{xy}{A two-column matrix including x-axis and y-axis values in
+the first and second columns, respectively.}
 }
 \description{
 This function is a wrapper for a scatter plot displaying

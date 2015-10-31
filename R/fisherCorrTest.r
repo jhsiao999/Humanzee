@@ -11,7 +11,6 @@
 #' @keywords Humanzee
 #' 
 #' @export
-#' 
 #' @examples
 #' fisherCorrTest()
 

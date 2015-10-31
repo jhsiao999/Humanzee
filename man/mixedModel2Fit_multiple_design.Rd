@@ -7,7 +7,11 @@
 mixedModel2Fit_multiple_design(design, block, yy)
 }
 \arguments{
-\item{yy}{}
+\item{design}{Design matrix.}
+
+\item{block}{Phentype for the blocking factor (vector).}
+
+\item{yy}{Gene (feature) by sample matrix.}
 }
 \description{
 Adapted from statmod package's mixedModel2Fit function. This function

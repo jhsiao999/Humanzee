@@ -1,11 +1,11 @@
 #' Wapper function for running interaction model on null data sts
 #'
-#' @param eset_full
-#' @param datatypes
-#' @param permute_labels
+#' @param eset_full Expression set.
+#' @param datatypes Technology type, labels are rna, ribo, or protein.
+#' @param permute_labels Specificy the phenotype labels that are to be 
+#'          shuffled during permutation.
 #' 
 #' @export
-#'
 #' @examples 
 #' permute_interact()
 

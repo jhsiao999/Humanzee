@@ -7,9 +7,11 @@
 testDE(eSet, seqData, species)
 }
 \arguments{
-\item{seqData}{}
+\item{eSet}{Expression set}
 
-\item{species}{}
+\item{seqData}{A factor vector of sequencing data type.}
+
+\item{species}{A factor vector of species.}
 }
 \description{
 This function tests for divergence between two species

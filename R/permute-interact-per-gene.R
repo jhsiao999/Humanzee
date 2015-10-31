@@ -5,16 +5,15 @@
 #' lables across species and/or across technology type (RNA, Ribo, Protein)
 #' to compute empirical p-values of interaction models.
 #'
-#' @param eset_full 
+#' @param eset_full Expression set.
 #' @param datatypes data types included in the analysis
 #' @param permute_phenotypes phenotypes that we would like to shuffle labels between/within
 #' @param n_permute number of permutation
-#' @param ncores
+#' @param ncores Number of cores requested.
 #' 
 #' @keywords Humanzee
 #'
 #' @export
-#' 
 #' @examples 
 #' permute_interact_per_gene()
 

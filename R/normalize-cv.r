@@ -4,7 +4,6 @@
 #' @param log2counts log2 count matrix of gene by cell.
 #' 
 #' @export
-#'
 #' @examples
 #' normalize_cv()
 #'

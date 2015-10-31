@@ -5,13 +5,12 @@
 #' with each gene marked for two divergence categories
 #' by color and shape
 #' 
-#' @param xy
-#' @param int_points1
+#' @param xy A two-column matrix including x-axis and y-axis values in
+#'            the first and second columns, respectively.
 #'
 #' @keywords Humanzee
 #' 
 #' @export
-#' 
 #' @examples
 #' plot_divergence_scatter()
 

@@ -10,8 +10,8 @@ demo_data(molecules_cv, anno_single, molecules_single_collision, per_person)
 Import data and prepare objects for shiny app
 }
 \examples{
-Data already cleaned. Lowly expressed or highly expressed genes were removed.
-save(anno_single, molecules_single_collision, molecules_cv,
+#Data already cleaned. Lowly expressed or highly expressed genes were removed.
+#save(anno_single, molecules_single_collision, molecules_cv,
       file = "../data/igraphScatter-demo.rda")
 }
 

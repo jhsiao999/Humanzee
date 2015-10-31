@@ -7,7 +7,6 @@
 #' @param is.cpm if the data is CPM normalized.
 #' 
 #' @export
-#'
 #' @examples
 #' voomWeightsCustomized()
 #'

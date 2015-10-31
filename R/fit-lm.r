@@ -4,13 +4,12 @@
 #' This function tests for differential gene expression
 #' using a nested linear model framework.
 #' 
-#' @param exp
-#' @param species
+#' @param exp Expression set.
+#' @param species Sample species label (a factor vector).
 #'
 #' @keywords Humanzee
 #' 
 #' @export
-#' 
 #' @examples
 #' fit_lm()
 

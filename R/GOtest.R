@@ -1,18 +1,17 @@
 #' Convert ENSG IDs to ENTREZ IDs
-# adapted from http://davetang.org/muse/2010/11/10/gene-ontology-enrichment-analysis/
+#' adapted from http://davetang.org/muse/2010/11/10/gene-ontology-enrichment-analysis/
 #'   
-#' @param my_ensembl_gene_universe: gene universe
-#' @param my_ensembl_gene_test: genes of interest
-#' @param pval_cutoff: cutoff when determining significant enrichment GO terms
-#' @param ontology: a list of GO ontologies that will be tested in the enrichment anlaysis. 
-#'        Default: ontology=c("BP","CC","MF").
-#' @param pval_cutoff: cutoff when determining significant enrichment GO terms. 
+#' @param my_ensembl_gene_universe Gene universe
+#' @param my_ensembl_gene_test Genes of interest
+#' @param pval_cutoff cutoff when determining significant enrichment GO terms
+#' @param ontology A list of GO ontologies that will be tested in the enrichment 
+#'        anlaysis. Default: ontology=c("BP","CC","MF").
+#' @param pval_cutoff Cutoff when determining significant enrichment GO terms. 
 #'        Default: pval_cutoff = .01.
-#' @return hg_over: lists of enrichment test results, each one is a GOHyperGResult 
+#' @return hg_over Lists of enrichment test results, each one is a GOHyperGResult 
 #'        instance of the GOstats package.
 #' 
 #' @export
-#' 
 #' @examples
 #' GOtest()
 

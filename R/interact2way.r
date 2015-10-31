@@ -11,7 +11,6 @@
 #' @keywords Humanzee
 #' 
 #' @export
-#' 
 #' @examples
 #' interact2way()
 #' eSet <- eSetRRP.RP.Q.log2[ ,eSetRRP.RP.Q.log2$seqData!="protein" & 

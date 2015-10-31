@@ -18,7 +18,6 @@
 #' @keywords batch
 #'
 #' @export
-#'
 #' @examples
 #' ruv_mixed_model()
 #'

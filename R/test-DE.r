@@ -3,14 +3,13 @@
 #' This function tests for divergence between two species
 #' in one molecular phenotype at a time. 
 #' 
-#' @param eSet
-#' @param seqData 
-#' @param species
+#' @param eSet Expression set
+#' @param seqData A factor vector of sequencing data type.
+#' @param species A factor vector of species.
 #'
 #' @keywords Humanzee
 #' 
 #' @export
-#' 
 #' @examples
 #' load(file.path(rdadir,"eSetRRP.rda"))
 #' massRes = testDE(eSetRRPall,seqData="protein",species=c("human","chimp"))$massRes

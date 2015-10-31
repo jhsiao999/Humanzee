@@ -11,7 +11,6 @@
 #' @keywords Humanzee
 #' 
 #' @export
-#' 
 #' @examples
 #' interact2way_full_buffer()
 

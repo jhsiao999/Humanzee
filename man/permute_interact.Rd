@@ -8,7 +8,12 @@ permute_interact(eset_full, datatypes, permute_labels, parallel = FALSE,
   ncores = 4)
 }
 \arguments{
-\item{permute_labels}{}
+\item{eset_full}{Expression set.}
+
+\item{datatypes}{Technology type, labels are rna, ribo, or protein.}
+
+\item{permute_labels}{Specificy the phenotype labels that are to be 
+shuffled during permutation.}
 }
 \description{
 Wapper function for running interaction model on null data sts

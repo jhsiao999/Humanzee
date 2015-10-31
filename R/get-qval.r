@@ -8,7 +8,6 @@
 #' @keywords Humanzee
 #' 
 #' @export
-#' 
 #' @examples
 #' get_qval()
 

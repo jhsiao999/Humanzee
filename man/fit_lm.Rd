@@ -8,7 +8,9 @@ ratio test statistic}
 fit_lm(exp, species)
 }
 \arguments{
-\item{species}{}
+\item{exp}{Expression set.}
+
+\item{species}{Sample species label (a factor vector).}
 }
 \description{
 This function tests for differential gene expression

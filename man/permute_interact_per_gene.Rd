@@ -8,13 +8,13 @@ permute_interact_per_gene(eset_full, datatypes, permute_phenotype, n_permute,
   ncores = 4)
 }
 \arguments{
-\item{eset_full}{}
+\item{eset_full}{Expression set.}
 
 \item{datatypes}{data types included in the analysis}
 
 \item{n_permute}{number of permutation}
 
-\item{ncores}{}
+\item{ncores}{Number of cores requested.}
 
 \item{permute_phenotypes}{phenotypes that we would like to shuffle labels between/within}
 }
