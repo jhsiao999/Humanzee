@@ -19,16 +19,16 @@
 bootstrap_cells <- function(log2counts, grouping_vector,
                             number_bootstrap) {
 #   log2counts <- molecules_ENSG
-#   grouping_vector <- anno_qc_filter$individual
-#   num_permute <- 10
-  number_cells <- dim(log2counts)[2]
+#   grouping_vector <- anno_filter$individual
+  number_cells <- data.frame(table(anno_filter$individual))
 
   bootstrap_log2counts <- lapply(1:number_bootstrap, function(ii_boot) {
     # creata a sequence of random numbers
     per_group <- lapply(1:3, function(ii_boot) {
+      num_cells <- number_cells$Freq[which(number_cells$Var1 == unique(grouping_vector)[ii_boot]) ]
       ind_log2counts <- log2counts[ , grouping_vector == unique(grouping_vector)[ii_boot]]
       num_cells <- ncol(ind_log2counts)
-      bootstrap_data <- ind_log2counts[ , sample(1:number_cells, replace = TRUE)]
+      bootstrap_data <- ind_log2counts[ , sample(1:num_cells, replace = TRUE)]
       bootstrap_data
     })
     per_group <- do.call(cbind, per_group)
