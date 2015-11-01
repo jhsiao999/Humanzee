@@ -54,6 +54,8 @@ permute_cv_test <- function(log2counts, grouping_vector, anno, number_permute,
     registerDoParallel(cores = number_cores)
     
     permuted_cv_adj <- foreach(ind_data = 1:number_permute) %dopar% {
+
+      per_data <- permuted_data[[ind_data]]
       perm_cv <- Humanzee::compute_cv(log2counts = per_data,
                                       grouping_vector = grouping_vector)
 
