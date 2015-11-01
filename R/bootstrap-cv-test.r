@@ -71,6 +71,8 @@ bootstrap_cv_test <- function(log2counts, grouping_vector, anno, number_bootstra
     }
   }
 
+rm(bootstrap_data)
+rm(bootstrap_cv_adj)
 
 bootstrap_distance <- lapply(bootstrap_cv_adj, function(per_data) {
   squared_dev <- rowSums( ( per_data - rowMedians(as.matrix(per_data)) )^2 )
@@ -80,8 +82,8 @@ bootstrap_distance <- lapply(bootstrap_cv_adj, function(per_data) {
 })
 
 if (output_rda == TRUE) {
-save(bootstrap_data, bootstrap_cv_adj,
-     file = "bootstrap-data.rda")
+#save(bootstrap_data, bootstrap_cv_adj,
+#     file = "bootstrap-data.rda")
 save(bootstrap_distance,
      file = "bootstrap-distance.rda")
 }
