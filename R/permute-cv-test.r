@@ -83,8 +83,8 @@ permuted_distance <- lapply(permuted_cv_adj, function(per_data) {
 })
 
 if (output_rda == TRUE) {
-save(permuted_data, permuted_cv_adj,
-     file = "permuted-data.rda")
+#save(permuted_data, permuted_cv_adj,
+#     file = "permuted-data.rda")
 save(permuted_distance,
      file = "permuted-distance.rda")
 }
