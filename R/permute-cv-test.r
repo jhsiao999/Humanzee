@@ -74,6 +74,8 @@ permute_cv_test <- function(log2counts, grouping_vector, anno, number_permute,
     }
   }
 
+rm(permuted_data)
+rm(permuted_cv_adj)
 
 permuted_distance <- lapply(permuted_cv_adj, function(per_data) {
   squared_dev <- rowSums( ( per_data - rowMedians(as.matrix(per_data)) )^2 )
@@ -81,6 +83,7 @@ permuted_distance <- lapply(permuted_cv_adj, function(per_data) {
   list(squared_dev = squared_dev,
        abs_dev = abs_dev)
 })
+
 
 if (output_rda == TRUE) {
 #save(permuted_data, permuted_cv_adj,
