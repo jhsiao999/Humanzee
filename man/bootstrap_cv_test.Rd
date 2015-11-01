@@ -5,11 +5,13 @@
 \title{Bootstrapping to estimate confidence interval for
 individual coefficients of variation}
 \usage{
-bootstrap_cv_test(log2counts, grouping_vector, anno, num_bootstrap,
+bootstrap_cv_test(log2counts, grouping_vector, anno, number_bootstrap,
   output_rda = FALSE, do_parallel = FALSE, number_cores = NULL)
 }
 \arguments{
 \item{log2counts}{log2 count matrix of gene by cell.}
+
+\item{number_bootstrap}{Number of boostrapped samples.}
 
 \item{group_cv}{CVs per batch computed use compute_cv().}
 }
