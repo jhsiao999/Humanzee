@@ -15,7 +15,9 @@
 #' @examples
 #' bootstrap_cv_test()
 #'
-bootstrap_cv_test <- function(log2counts, grouping_vector, anno, number_bootstrap,
+bootstrap_cv_test <- function(log2counts, grouping_vector, anno, 
+                              number_bootstrap,
+                              size_bootstrap,
                               output_rda = FALSE,
                               do_parallel = FALSE,
                               number_cores = NULL) {

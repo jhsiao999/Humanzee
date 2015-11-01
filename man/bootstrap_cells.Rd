@@ -4,7 +4,8 @@
 \alias{bootstrap_cells}
 \title{Bootstrap cell labels for computing confidence intervals}
 \usage{
-bootstrap_cells(log2counts, grouping_vector, number_bootstrap)
+bootstrap_cells(log2counts, grouping_vector, number_bootstrap,
+  size_bootstrap = NULL)
 }
 \arguments{
 \item{log2counts}{log2counts matrix of gene by cells}

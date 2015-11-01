@@ -6,7 +6,8 @@
 individual coefficients of variation}
 \usage{
 bootstrap_cv_test(log2counts, grouping_vector, anno, number_bootstrap,
-  output_rda = FALSE, do_parallel = FALSE, number_cores = NULL)
+  size_bootstrap, output_rda = FALSE, do_parallel = FALSE,
+  number_cores = NULL)
 }
 \arguments{
 \item{log2counts}{log2 count matrix of gene by cell.}
