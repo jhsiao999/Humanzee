@@ -26,7 +26,8 @@ bootstrap_cv_test <- function(log2counts, grouping_vector, anno,
 
   bootstrap_data <- bootstrap_cells(log2counts,
                                     grouping_vector,
-                                    number_bootstrap)
+                                    number_bootstrap,
+                                    size_bootstrap)
 
   # Compute adjusted CV for the bootstrapped data
   # no parallelization
