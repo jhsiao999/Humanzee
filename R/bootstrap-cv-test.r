@@ -78,12 +78,12 @@ bootstrap_distance <- lapply(bootstrap_cv_adj, function(per_data) {
        abs_dev = abs_dev)
 })
 
-rm(bootstrap_data)
-rm(bootstrap_cv_adj)
+#rm(bootstrap_data)
+#rm(bootstrap_cv_adj)
 
 if (output_rda == TRUE) {
-#save(bootstrap_data, bootstrap_cv_adj,
-#     file = "bootstrap-data.rda")
+save(bootstrap_data, bootstrap_cv_adj,
+     file = "bootstrap-data.rda")
 save(bootstrap_distance,
      file = "bootstrap-distance.rda")
 }
