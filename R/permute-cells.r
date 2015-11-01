@@ -22,7 +22,7 @@ permute_cells <- function(log2counts, grouping_vector, number_permute) {
 
   permuted_log2counts <- lapply(1:number_permute, function(ii_permute) {
     # creata a random sequence of labels
-    perm_labels <- sample(num_cells, replace = FALSE)
+    perm_labels <- sample(number_cells, replace = FALSE)
 
     # reorder columns (cells) in the data matrix
     # according to perm_labels
