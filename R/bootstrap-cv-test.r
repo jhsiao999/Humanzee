@@ -9,12 +9,13 @@
 #'
 #' @param group_cv CVs per batch computed use compute_cv().
 #' @param log2counts log2 count matrix of gene by cell.
+#' @param number_bootstrap Number of boostrapped samples.
 #'
 #' @export
 #' @examples
 #' bootstrap_cv_test()
 #'
-bootstrap_cv_test <- function(log2counts, grouping_vector, anno, num_bootstrap,
+bootstrap_cv_test <- function(log2counts, grouping_vector, anno, number_bootstrap,
                               output_rda = FALSE,
                               do_parallel = FALSE,
                               number_cores = NULL) {
@@ -23,7 +24,7 @@ bootstrap_cv_test <- function(log2counts, grouping_vector, anno, num_bootstrap,
 
   bootstrap_data <- bootstrap_cells(log2counts,
                                     grouping_vector,
-                                    num_bootstrap)
+                                    number_bootstrap)
 
   # Compute adjusted CV for the bootstrapped data
   # no parallelization
@@ -50,7 +51,7 @@ bootstrap_cv_test <- function(log2counts, grouping_vector, anno, num_bootstrap,
   if(do_parallel == TRUE) {
     require(doParallel)
     registerDoParallel(cores = number_cores)
-    bootstrap_cv_adj <- foreach(ind_data = 1:num_bootstrap) %dopar% {
+    bootstrap_cv_adj <- foreach(ind_data = 1:number_bootstrap) %dopar% {
       per_data <- bootstrap_data[[ind_data]]
       boot_cv <- compute_cv(log2counts = per_data,
                             grouping_vector = grouping_vector)
