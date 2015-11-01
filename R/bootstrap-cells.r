@@ -27,7 +27,7 @@ bootstrap_cells <- function(log2counts, grouping_vector,
       ind_log2counts <- log2counts[ , grouping_vector == unique(grouping_vector)[ii_boot]]
       num_cells <- ncol(ind_log2counts)
 
-      if (size_bootstrap == NULL) {
+      if (is.null(size_bootstrap)) {
           bootstrap_data <- ind_log2counts[ , sample(1:num_cells, replace = TRUE)]
         }
       if (size_bootstrap != NULL) {
