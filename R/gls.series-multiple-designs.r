@@ -1,16 +1,18 @@
-#' limma gls.series for varying covariates across genes
+#' limma gls.series adapted for varying covariates across genes
 #' 
 #' This function tests for divergence between two species
 #' in one molecular phenotype at a time. 
 #' 
-#' @param M
-#'
+#' @param M Matrix of gene by sample.
+#' @param cov_matrix Matrix of gene specific covariate information (gene by sample).
+#' @param design Model matrix, the part that is fixed across genes, indepenent of cov_matrix.
+#' 
 #' @keywords Humanzee
 #' 
 #' @export
 #' @examples 
-#' M = phos_data
-#' cov_matrix = protein_pheno_data
+#' M <- phos_data
+#' cov_matrix <- protein_pheno_data
 #' individual <- as.numeric(str_extract(colnames(phos_data), "[0-9]+"))
 #' design <- model.matrix(~ 1 + as.factor(individual))
 #' block <- block
@@ -32,10 +34,10 @@ gls.series_multiple_designs <- function (M,
     design <- as.matrix(design)
     if (nrow(design) != narrays) 
         stop("Number of rows of design matrix does not match number of arrays")
-    if (is.null(correlation)) 
-        correlation <- duplicateCorrelation(M, design = design, 
-                                            ndups = ndups, spacing = spacing, block = block, 
-                                            weights = weights, ...)$consensus.correlation
+#    if (is.null(correlation)) 
+#        correlation <- duplicateCorrelation(M, design = design, 
+#                                            ndups = ndups, spacing = spacing, block = block, 
+#                                            weights = weights, ...)$consensus.correlation
     if (!is.null(weights)) {
         weights[is.na(weights)] <- 0
         weights <- asMatrixWeights(weights, dim(M))
@@ -64,8 +66,8 @@ gls.series_multiple_designs <- function (M,
         M <- unwrapdups(M, ndups = ndups, spacing = spacing)
         if (!is.null(weights)) 
             weights <- unwrapdups(weights, ndups = ndups, spacing = spacing)
-        design <- design %x% rep(1, ndups)
-        colnames(design) <- coef.names 
+#         design <- design %x% rep(1, ndups)
+#         colnames(design) <- coef.names 
     } else {
         if (ndups > 1) {
             stop("Cannot specify ndups>2 and non-null block argument")
@@ -87,45 +89,6 @@ gls.series_multiple_designs <- function (M,
     stdev.unscaled <- matrix(NA, ngenes, nbeta, 
                              dimnames = list(rownames(M), 
                                         coef.names))
-    # NoProbeWts <- all(is.finite(M)) && (is.null(weights) || !is.null(attr(weights, 
-    #                                                                      "arrayweights")))
-#     if (NoProbeWts) {
-#         V <- cormatrix
-#         if (!is.null(weights)) {
-#             wrs <- 1/sqrt(weights[1, ])
-#             V <- wrs * t(wrs * t(V))
-#         }
-#         cholV <- chol(V)
-#         y <- backsolve(cholV, t(M), transpose = TRUE)
-#         dimnames(y) <- rev(dimnames(M))
-#         X <- backsolve(cholV, design, transpose = TRUE)
-#         dimnames(X) <- dimnames(design)
-#         fit <- lm.fit(X, y)
-#         if (fit$df.residual > 0) {
-#             if (is.matrix(fit$effects)) 
-#                 fit$sigma <- sqrt(colMeans(fit$effects[-(1:fit$rank), 
-#                                                        , drop = FALSE]^2))
-#             else fit$sigma <- sqrt(mean(fit$effects[-(1:fit$rank)]^2))
-#         }
-#         else fit$sigma <- rep(NA, ngenes)
-#         fit$fitted.values <- fit$residuals <- fit$effects <- NULL
-#         fit$coefficients <- t(fit$coefficients)
-#         fit$cov.coefficients <- chol2inv(fit$qr$qr, size = fit$qr$rank)
-#         est <- fit$qr$pivot[1:fit$qr$rank]
-#         dimnames(fit$cov.coefficients) <- list(coef.names[est], 
-#                                                coef.names[est])
-#         stdev.unscaled[, est] <- matrix(sqrt(diag(fit$cov.coefficients)), 
-#                                         ngenes, fit$qr$rank, byrow = TRUE)
-#         fit$stdev.unscaled <- stdev.unscaled
-#         fit$df.residual <- rep.int(fit$df.residual, ngenes)
-#         dimnames(fit$stdev.unscaled) <- dimnames(fit$stdev.unscaled) <- dimnames(fit$coefficients)
-#         fit$pivot <- fit$qr$pivot
-#         fit$ndups <- ndups
-#         fit$spacing <- spacing
-#         fit$block <- block
-#         fit$correlation <- correlation
-#         return(fit)
-#     }
 
     beta <- stdev.unscaled
     sigma <- rep(NA, ngenes)
@@ -148,8 +111,7 @@ gls.series_multiple_designs <- function (M,
             if (all(X == 0)) {
                 df.residual[i] <- n
                 sigma[i] <- sqrt(array(1/n, c(1, n)) %*% y^2)
-            }
-            else {
+            } else {
                 X <- backsolve(cholV, X, transpose = TRUE)
                 out <- lm.fit(X, y)
                 est <- !is.na(out$coefficients)

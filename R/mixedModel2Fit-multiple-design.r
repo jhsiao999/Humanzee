@@ -30,14 +30,18 @@ mixedModel2Fit_multiple_design <-
         nafun <- function(e) NA
 
 #        if (nobs > (nbeta + 2) && nblocks > 1 && nblocks < nobs - 1) {
-            yy <- yy[o]
-            X <- design[o, , drop = FALSE]
-            Z <- model.matrix(~0 + A)
+        yy <- yy[o]
+        X <- design[o, , drop = FALSE]
+        Z <- tryCatch(model.matrix(~0 + A), error = nafun)
+        if (sum(is.na(Z)) >= 1)  {
+            rho <- NA
+        } else {
             s <- tryCatch(statmod::mixedModel2Fit(yy, X, 
-                          Z, only.varcomp = TRUE, maxit = 20)$varcomp, 
-                          error = nafun)
+                               Z, only.varcomp = TRUE, maxit = 20)$varcomp, 
+                                 error = nafun)
             if (!is.na(s[1])) 
                 rho <- s[2]/sum(s)
+        }
         return(rho)
 #        }
     }
