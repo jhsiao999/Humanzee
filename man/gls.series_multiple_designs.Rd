@@ -2,22 +2,26 @@
 % Please edit documentation in R/gls.series-multiple-designs.r
 \name{gls.series_multiple_designs}
 \alias{gls.series_multiple_designs}
-\title{limma gls.series for varying covariates across genes}
+\title{limma gls.series adapted for varying covariates across genes}
 \usage{
 gls.series_multiple_designs(M, cov_matrix = NULL, design = NULL,
   ndups = 1, spacing = 1, block = NULL, correlation = NULL,
   weights = NULL, ...)
 }
 \arguments{
-\item{M}{}
+\item{M}{Matrix of gene by sample.}
+
+\item{cov_matrix}{Matrix of gene specific covariate information (gene by sample).}
+
+\item{design}{Model matrix, the part that is fixed across genes, indepenent of cov_matrix.}
 }
 \description{
 This function tests for divergence between two species
 in one molecular phenotype at a time.
 }
 \examples{
-M = phos_data
-cov_matrix = protein_pheno_data
+M <- phos_data
+cov_matrix <- protein_pheno_data
 individual <- as.numeric(str_extract(colnames(phos_data), "[0-9]+"))
 design <- model.matrix(~ 1 + as.factor(individual))
 block <- block
