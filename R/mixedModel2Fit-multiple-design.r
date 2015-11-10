@@ -39,8 +39,11 @@ mixedModel2Fit_multiple_design <-
             s <- tryCatch(statmod::mixedModel2Fit(yy, X, 
                                Z, only.varcomp = TRUE, maxit = 20)$varcomp, 
                                  error = nafun)
-            if (!is.na(s[1])) 
+            if (!is.na(s[1])) {
                 rho <- s[2]/sum(s)
+            } else {
+                rho <- NA
+            }
         }
         return(rho)
 #        }
