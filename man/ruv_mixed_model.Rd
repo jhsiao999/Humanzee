@@ -4,8 +4,8 @@
 \alias{ruv_mixed_model}
 \title{Remove unwanted variation using mixed model}
 \usage{
-ruv_mixed_model(M, design = NULL, ndups = 1, spacing = 1, block = NULL,
-  correlation = NULL, weights = NULL)
+ruv_mixed_model(M, design = NULL, per_gene = FALSE, ndups = 1,
+  spacing = 1, block = NULL, correlation = NULL, weights = NULL)
 }
 \arguments{
 \item{M}{Data matrix of genes by samples.}

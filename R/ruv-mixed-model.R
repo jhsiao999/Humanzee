@@ -22,10 +22,11 @@
 #' ruv_mixed_model()
 #'
 
-ruv_mixed_model <-
-
-function (M, design = NULL, ndups = 1, spacing = 1,
-          block = NULL, correlation = NULL, weights = NULL) {
+ruv_mixed_model <- function (M, design = NULL, per_gene = FALSE,
+                             ndups = 1, spacing = 1,
+                             block = NULL, 
+                             correlation = NULL, 
+                             weights = NULL) {
 
   M <- as.matrix(M)
   narrays <- ncol(M)
@@ -56,8 +57,16 @@ function (M, design = NULL, ndups = 1, spacing = 1,
                                                  nblocks, byrow = TRUE)
 
   # Prepare variance-covariance matrix for the randome effect
-  if (length(correlation) == 1) {
+  if ( length(correlation) == 1 & per_gene == FALSE ) {
       correlation <- rep(correlation, dim(M)[1])
+  } else if ( length(correlation) != 1 & per_gene == FALSE ) {
+    correlation <- correlation
+  } else if ( length(correlation) == 1 & per_gene == TRUE ) {
+    stop("Correlation vector is of length 1. We need correlation coeff.
+          for each gene to perform genewise analysis.") 
+  } else if ( length(correlation) == 1 & per_gene == FALSE ) {
+    stop("Correlation vector length is more than 1. We need
+          a single correlation coef. to perform gene-wide analysis.")
   }
 
   ngenes <- nrow(M)
