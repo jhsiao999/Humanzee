@@ -24,8 +24,8 @@
 
 ruv_mixed_model <- function (M, design = NULL, per_gene = FALSE,
                              ndups = 1, spacing = 1,
-                             block = NULL, 
-                             correlation = NULL, 
+                             block = NULL,
+                             correlation = NULL,
                              weights = NULL) {
 
   M <- as.matrix(M)
@@ -63,7 +63,7 @@ ruv_mixed_model <- function (M, design = NULL, per_gene = FALSE,
     correlation <- correlation
   } else if ( length(correlation) == 1 & per_gene == TRUE ) {
     stop("Correlation vector is of length 1. We need correlation coeff.
-          for each gene to perform genewise analysis.") 
+          for each gene to perform genewise analysis.")
   } else if ( length(correlation) == 1 & per_gene == FALSE ) {
     stop("Correlation vector length is more than 1. We need
           a single correlation coef. to perform gene-wide analysis.")
@@ -77,7 +77,8 @@ ruv_mixed_model <- function (M, design = NULL, per_gene = FALSE,
   sigma <- rep(NA, ngenes)
   df.residual <- rep(0, ngenes)
   residuals <- vector("list", ngenes)
-  for (i in 1:ngenes) {
+  for (i in 3852:4000) {
+    print(i)
     y <- drop(M[i, ])
     o <- is.finite(y)
     y <- y[o]
@@ -91,7 +92,23 @@ ruv_mixed_model <- function (M, design = NULL, per_gene = FALSE,
         wrs <- 1/sqrt(drop(weights[i, o]))
         V <- wrs * t(wrs * t(V))
       }
-      cholV <- chol(V)
+      # handle cormatrix with negative eigenvalues
+      cholV <- tryCatch( chol(V), error = function(err) {
+          if (correlation[i] < 1) {
+              cormatrix <- Z %*% ( round( correlation[i], 2) * t(Z))
+          }
+          if (correlation[i] == 1) {
+              cormatrix <- Z %*% ( ( correlation[i] - runif(1, 0, 10^(-6))) * t(Z))
+          }
+          diag(cormatrix) <- 1
+          X <- design[o, , drop = FALSE]
+          V <- cormatrix[o, o]
+          if (!is.null(weights)) {
+            wrs <- 1/sqrt(drop(weights[i, o]))
+            V <- wrs * t(wrs * t(V))
+          }
+          return(chol(V))
+        } )
       y <- backsolve(cholV, y, transpose = TRUE)
       if (all(X == 0)) {
         df.residual[i] <- n
