@@ -78,7 +78,6 @@ ruv_mixed_model <- function (M, design = NULL, per_gene = FALSE,
   df.residual <- rep(0, ngenes)
   residuals <- vector("list", ngenes)
   for (i in 1:ngenes) {
-    print(i)
     y <- drop(M[i, ])
     o <- is.finite(y)
     y <- y[o]
