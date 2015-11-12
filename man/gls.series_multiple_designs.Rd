@@ -17,7 +17,8 @@ gls.series_multiple_designs(M, cov_matrix = NULL, design = NULL,
 }
 \description{
 This function tests for divergence between two species
-in one molecular phenotype at a time.
+in one molecular phenotype at a time. The current version is tuned 
+for Brett's diffphos analysis.
 }
 \examples{
 M <- phos_data

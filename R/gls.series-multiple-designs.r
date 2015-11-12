@@ -1,7 +1,8 @@
 #' limma gls.series adapted for varying covariates across genes
 #' 
 #' This function tests for divergence between two species
-#' in one molecular phenotype at a time. 
+#' in one molecular phenotype at a time. The current version is tuned 
+#' for Brett's diffphos analysis.
 #' 
 #' @param M Matrix of gene by sample.
 #' @param cov_matrix Matrix of gene specific covariate information (gene by sample).
