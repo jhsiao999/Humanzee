@@ -52,7 +52,7 @@ permute_cv_test <- function(log2counts, grouping_vector, anno, number_permute,
   if(do_parallel == TRUE) {
     require(doParallel)
     registerDoParallel(cores = number_cores)
-    
+
     permuted_cv_adj <- foreach(ind_data = 1:number_permute) %dopar% {
 
       per_data <- permuted_data[[ind_data]]
@@ -73,6 +73,7 @@ permute_cv_test <- function(log2counts, grouping_vector, anno, number_permute,
       return(df_norm)
     }
   }
+rm(permtued_data)
 
 permuted_distance <- lapply(permuted_cv_adj, function(per_data) {
   squared_dev <- rowSums( ( per_data - rowMedians(as.matrix(per_data)) )^2 )
@@ -80,14 +81,11 @@ permuted_distance <- lapply(permuted_cv_adj, function(per_data) {
   list(squared_dev = squared_dev,
        abs_dev = abs_dev)
 })
-
-#rm(permuted_data)
-#rm(permuted_cv_adj)
-
+rm(permuted_cv_adj)
 
 if (output_rda == TRUE) {
-save(permuted_data, permuted_cv_adj,
-     file = "permuted-data.rda")
+# save(permuted_data, permuted_cv_adj,
+#      file = "permuted-data.rda")
 save(permuted_distance,
      file = "permuted-distance.rda")
 }
