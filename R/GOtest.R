@@ -21,7 +21,10 @@ GOtest <- function(my_ensembl_gene_universe,my_ensembl_gene_test,
     require(GO.db)
     require(GOstats)
     require(biomaRt)
-    ensembl <- useMart("ensembl",dataset="hsapiens_gene_ensembl")
+    #ensembl <- useMart("ensembl",dataset="hsapiens_gene_ensembl")
+    ensembl <- useMart("ENSEMBL_MART_ENSEMBL", dataset = "hsapiens_gene_ensembl",
+                     host="www.ensembl.org")
+
     # Convert Ensembl IDs to Entrez IDs
     ensembl_to_entrez <- getBM(attributes=c('ensembl_gene_id', 'entrezgene'), 
                                 filters = 'ensembl_gene_id', 
