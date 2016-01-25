@@ -42,13 +42,9 @@ permute_cv_test <- function(log2counts, grouping_vector, anno, number_permute,
                      perm_cv_adj[[2]]$log10cv2_adj,
                      perm_cv_adj[[3]]$log10cv2_adj)
 
-    # Standardize CVs for each indivdual's CV mean and variance across genes
-    df_norm <- sweep(df_perm, MARGIN = 2, STATS = colMeans(as.matrix(df_perm)), FUN = "-")
-    df_norm <- sweep(df_perm, MARGIN = 2, STATS = sqrt(colVars(as.matrix(df_perm))), FUN = "/")
-    return(df_norm)
+    return(df_perm)
   })
   }
-  # no parallelization
   if(do_parallel == TRUE) {
     require(doParallel)
     registerDoParallel(cores = number_cores)
@@ -67,25 +63,18 @@ permute_cv_test <- function(log2counts, grouping_vector, anno, number_permute,
                        perm_cv_adj[[2]]$log10cv2_adj,
                        perm_cv_adj[[3]]$log10cv2_adj)
 
-      # Standardize CVs for each indivdual's CV mean and variance across genes
-      df_norm <- sweep(df_perm, MARGIN = 2, STATS = colMeans(as.matrix(df_perm)), FUN = "-")
-      df_norm <- sweep(df_perm, MARGIN = 2, STATS = sqrt(colVars(as.matrix(df_perm))), FUN = "/")
-      return(df_norm)
+      return(df_perm)
     }
   }
-rm(permtued_data)
+rm(permuted_data)
 
 permuted_distance <- lapply(permuted_cv_adj, function(per_data) {
-  squared_dev <- rowSums( ( per_data - rowMedians(as.matrix(per_data)) )^2 )
-  abs_dev <- rowSums(abs( per_data - rowMedians(as.matrix(per_data)) ))
-  list(squared_dev = squared_dev,
-       abs_dev = abs_dev)
+  mad <- rowMedians(abs( per_data - rowMedians(as.matrix(per_data)) ))
+  list(mad = mad)
 })
 rm(permuted_cv_adj)
 
 if (output_rda == TRUE) {
-# save(permuted_data, permuted_cv_adj,
-#      file = "permuted-data.rda")
 save(permuted_distance,
      file = "permuted-distance.rda")
 }
