@@ -11,4 +11,4 @@ Depends:
 License: GPL (>=2)
 LazyData: true
 Encoding: ASCII
-RoxygenNote: 5.0.0
+RoxygenNote: 5.0.1

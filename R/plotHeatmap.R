@@ -7,7 +7,7 @@
 #'
 #' @export
 #'
-#' @example hmap <- plotHeatmap(heatmap_allgos,
+#' @examples hmap <- plotHeatmap(heatmap_allgos,
 #'                      labCol = c("Ribo > mRNA", "RNA > Ribo",
 #'                                "Ribo > Protein", "Protein > Ribo"))
 plotHeatmap <- function(heatmapData, mar =  c(0, 0, 0, 0),

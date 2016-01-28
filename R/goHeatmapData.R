@@ -8,8 +8,7 @@
 #'
 #' @export
 #'
-#' @example
-#'
+#' @examples
 #' golist <- list(go_riboGTrna = summary(go_riboGTrna$CC, pvalue = 1),
 #'                 go_rnaGTribo = summary(go_rnaGTribo$CC, pvalue = 1),
 #'                 go_riboGTpro = summary(go_riboGTpro$CC, pvalue = 1),
