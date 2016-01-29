@@ -25,4 +25,7 @@ collected using Drop-seq protocol.
 cell_phase_assign()
 
 }
+\seealso{
+Other single.cell: \code{\link{density_overlay}}
+}
 
