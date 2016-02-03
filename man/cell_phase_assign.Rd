@@ -26,6 +26,6 @@ cell_phase_assign()
 
 }
 \seealso{
-Other single.cell: \code{\link{density_overlay}}
+Other single.cell: \code{\link{plot_density}}
 }
 
