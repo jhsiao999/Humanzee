@@ -17,7 +17,8 @@
 plot_density_overlay <- function(molecules_ENSG, annotation,
                          batches = NULL,
                          which_gene, labels, 
-                         xlims = NULL, ylims = NULL, gene_symbols) {
+                         xlims = NULL, ylims = NULL, 
+                         gene_symbols = NULL) {
   if_present <- which(rownames(molecules_ENSG) == which_gene)
   if(length(if_present) == 0) {
     stop("Gene not present in the data")
@@ -27,6 +28,14 @@ plot_density_overlay <- function(molecules_ENSG, annotation,
   library(broman)
   crayon <- brocolors("crayon")
   
+  if (!is.null(gene_symbols)) {
+    gene_symbol <- with(gene_symbols, 
+                      external_gene_name[which(ensembl_gene_id == which_gene)])
+    main_title <- gene_symbol
+    } else {
+    main_title <- which_gene
+    }
+
   if (is.null(batches)) {
     individuals <- unique(annotation$individual)
     colors <- c("Sunset Orange", "Tropical Rain Forest", "Denim")
@@ -49,8 +58,7 @@ plot_density_overlay <- function(molecules_ENSG, annotation,
     }
     axis(1); axis(2)
     mtext(text = labels, side = 3)
-    title(main = with(gene_symbols, 
-                      external_gene_name[which(ensembl_gene_id == which_gene)]) )
+    title(main = main_title )
   }
   
   if (!is.null(batches)) {
@@ -125,8 +133,7 @@ plot_density_overlay <- function(molecules_ENSG, annotation,
         
     axis(1); axis(2)
     mtext(text = labels, side = 3)
-    title(main = with(gene_symbols, 
-                      external_gene_name[which(ensembl_gene_id == which_gene)]) )
+    title(main = main_title )
   }
 }
 

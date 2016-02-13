@@ -5,7 +5,7 @@
 \title{Overlay density curves using base package}
 \usage{
 plot_density_overlay(molecules_ENSG, annotation, batches = NULL, which_gene,
-  labels, xlims = NULL, ylims = NULL, gene_symbols)
+  labels, xlims = NULL, ylims = NULL, gene_symbols = NULL)
 }
 \arguments{
 \item{annotation}{meta-data of the samples.}
