@@ -16,7 +16,8 @@
 
 plot_density_overlay <- function(molecules_ENSG, annotation,
                          batches = NULL,
-                         which_gene, labels, 
+                         which_gene, 
+                         labels = NULL, 
                          xlims = NULL, ylims = NULL, 
                          gene_symbols = NULL) {
   if_present <- which(rownames(molecules_ENSG) == which_gene)
