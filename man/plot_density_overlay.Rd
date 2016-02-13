@@ -4,8 +4,8 @@
 \alias{plot_density_overlay}
 \title{Overlay density curves using base package}
 \usage{
-plot_density_overlay(molecules_ENSG, annotation, individuals, batches = NULL,
-  which_gene, labels, xlims = NULL, ylims = NULL, gene_symbols)
+plot_density_overlay(molecules_ENSG, annotation, batches = NULL, which_gene,
+  labels, xlims = NULL, ylims = NULL, gene_symbols)
 }
 \arguments{
 \item{annotation}{meta-data of the samples.}
