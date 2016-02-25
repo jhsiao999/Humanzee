@@ -4,7 +4,8 @@
 \alias{permute_cells}
 \title{Permute cell labels for computing empirical p-values}
 \usage{
-permute_cells(log2counts, grouping_vector, number_permute)
+permute_cells(log2counts, grouping_vector, number_permute,
+  subset_matrix = NULL)
 }
 \arguments{
 \item{log2counts}{log2counts matrix of gene by cells}
@@ -22,6 +23,13 @@ adjusted coefficients of variation computed from three subsets of
 cells, each of which is quantified for a LCL.
 }
 \examples{
-permuate_cells()
+# tmp <- permute_cells(log2counts = molecules_final_df[1:5,],
+#                      grouping_vector = anno_filter$individual,
+#                      number_permute = 2,
+#                      subset_matrix = molecules_expressed_df[1:5, ])
+}
+\seealso{
+Other single.cell: \code{\link{cell_phase_assign}},
+  \code{\link{plot_density_overlay}}
 }
 

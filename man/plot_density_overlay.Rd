@@ -27,6 +27,7 @@ Overlay density curves using base package
 plot_density_overlay()
 }
 \seealso{
-Other single.cell: \code{\link{cell_phase_assign}}
+Other single.cell: \code{\link{cell_phase_assign}},
+  \code{\link{permute_cells}}
 }
 
