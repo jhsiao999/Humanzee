@@ -2,7 +2,7 @@
 #'
 #' @param group_cv CVs per batch computed use compute_cv().
 #' @param log2counts log2 count matrix of gene by cell.
-#' 
+#'
 #' @export
 #' @examples
 #' normalize_cv()
@@ -23,7 +23,7 @@ normalize_cv <- function(group_cv, log2counts, anno) {
     rollapply( log10(data_cv^2)[order_gene],
                width = 50, by = 25,
                FUN = median, fill = list("extend", "extend", "NA"),
-               na.rm = TRUE )
+               na.rm = TRUE)
   )
   ii_na <- which( is.na(roll_medians) )
   roll_medians[ii_na] <- median( log10(data_cv^2)[order_gene][ii_na], na.rm = TRUE )

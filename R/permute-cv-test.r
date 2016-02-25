@@ -16,9 +16,9 @@
 #' @examples
 #' permute_cv_test()
 #'
-permute_cv_test <- function(log2counts, 
-                            grouping_vector, 
-                            anno, 
+permute_cv_test <- function(log2counts,
+                            grouping_vector,
+                            anno,
                             number_permute,
                             subset_matrix = NULL,
                             output_rda = FALSE,
@@ -34,21 +34,21 @@ permute_cv_test <- function(log2counts,
     }
   }
 
-  permuted_data <- Humanzee::permute_cells(log2counts,
-                                            grouping_vector,
-                                            number_permute,
-                                            subset_matrix)
+  permuted_data <- permute_cells(log2counts = log2counts,
+                                  grouping_vector = grouping_vector,
+                                  number_permute = number_permute,
+                                  subset_matrix = subset_matrix)
 
   # Compute adjusted CV for the permuted data
   # no parallelization
   if(do_parallel == FALSE) {
   permuted_cv_adj <- lapply(permuted_data, function(per_data) {
-    perm_cv <- Humanzee::compute_cv(log2counts = per_data,
-                                    grouping_vector = grouping_vector)
+    perm_cv <- compute_cv(log2counts = per_data,
+                          grouping_vector = grouping_vector)
 
-    perm_cv_adj <- Humanzee::normalize_cv(group_cv = perm_cv,
-                                          log2counts = per_data,
-                                          anno = anno)
+    perm_cv_adj <- normalize_cv(group_cv = perm_cv,
+                                log2counts = per_data,
+                                anno = anno)
 
     df_perm <- cbind(perm_cv_adj[[1]]$log10cv2_adj,
                      perm_cv_adj[[2]]$log10cv2_adj,
