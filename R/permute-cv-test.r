@@ -19,7 +19,7 @@
 permute_cv_test <- function(log2counts, 
                             grouping_vector, 
                             anno, n
-                            umber_permute,
+                            number_permute,
                             subset_matrix = NULL,
                             output_rda = FALSE,
                             do_parallel = FALSE,
