@@ -80,10 +80,12 @@ permute_cv_test <- function(log2counts,
   }
 rm(permuted_data)
 
-permuted_distance <- lapply(permuted_cv_adj, function(per_data) {
+permuted_distance <- do.call(cbind,
+  lapply(permuted_cv_adj, function(per_data) {
   mad <- rowMedians(abs( per_data - rowMedians(as.matrix(per_data)) ))
-  list(mad = mad)
-})
+  return(mad)
+}) )
+
 rm(permuted_cv_adj)
 
 if (output_rda == TRUE) {
@@ -91,7 +93,7 @@ save(permuted_distance,
      file = "permuted-distance.rda")
 }
 if (output_rda == FALSE) {
-  return(list(permuted_distance = permuted_distance$mad))
+  return(permuted_distance)
 }
 
 }
