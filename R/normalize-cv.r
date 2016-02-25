@@ -9,11 +9,12 @@
 #'
 normalize_cv <- function(group_cv, log2counts, anno) {
   library(zoo)
+
   # Compute a data-wide coefficient of variation on counts.
-  data_cv <- apply(2^log2counts, 1, sd)/apply(2^log2counts, 1, mean)
+  data_cv <- apply(2^log2counts, 1, sd, na.rm = TRUE)/apply(2^log2counts, 1, mean, na.rm = TRUE)
 
   # Order genes by mean expression levels
-  order_gene <- order(apply(2^log2counts, 1, mean))
+  order_gene <- order(apply(2^log2counts, 1, mean, na.rm = TRUE))
 
   # Rolling medians of log10 squared CV by mean expression levels
   # Avoid warning message introduced by NA in the rollapply results,
@@ -21,10 +22,11 @@ normalize_cv <- function(group_cv, log2counts, anno) {
   roll_medians <- suppressWarnings(
     rollapply( log10(data_cv^2)[order_gene],
                width = 50, by = 25,
-               FUN = median, fill = list("extend", "extend", "NA") )
+               FUN = median, fill = list("extend", "extend", "NA"),
+               na.rm = TRUE )
   )
   ii_na <- which( is.na(roll_medians) )
-  roll_medians[ii_na] <- median( log10(data_cv^2)[order_gene][ii_na] )
+  roll_medians[ii_na] <- median( log10(data_cv^2)[order_gene][ii_na], na.rm = TRUE )
   names(roll_medians) <- rownames(log2counts)[order_gene]
 
   # Order rolling medians according to the count matrix

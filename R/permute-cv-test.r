@@ -16,16 +16,28 @@
 #' @examples
 #' permute_cv_test()
 #'
-permute_cv_test <- function(log2counts, grouping_vector, anno, number_permute,
-                              output_rda = FALSE,
-                              do_parallel = FALSE,
-                              number_cores = NULL) {
-  require(Humanzee)
+permute_cv_test <- function(log2counts, 
+                            grouping_vector, 
+                            anno, n
+                            umber_permute,
+                            subset_matrix = NULL,
+                            output_rda = FALSE,
+                            do_parallel = FALSE,
+                            number_cores = NULL) {
   require(matrixStats)
+
+  if (!is.null(subset_matrix)) make_subset <- TRUE
+
+  if (make_subset) {
+    if (!all.equal(dim(log2counts), dim(subset_matrix))) {
+      stop("dimension of count matrix does not match dimension of subset matrix")
+    }
+  }
 
   permuted_data <- Humanzee::permute_cells(log2counts,
                                             grouping_vector,
-                                            number_permute)
+                                            number_permute,
+                                            subset_matrix)
 
   # Compute adjusted CV for the permuted data
   # no parallelization
@@ -35,8 +47,8 @@ permute_cv_test <- function(log2counts, grouping_vector, anno, number_permute,
                                     grouping_vector = grouping_vector)
 
     perm_cv_adj <- Humanzee::normalize_cv(group_cv = perm_cv,
-                                         log2counts = per_data,
-                                         anno = anno)
+                                          log2counts = per_data,
+                                          anno = anno)
 
     df_perm <- cbind(perm_cv_adj[[1]]$log10cv2_adj,
                      perm_cv_adj[[2]]$log10cv2_adj,
