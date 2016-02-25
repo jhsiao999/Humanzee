@@ -34,7 +34,7 @@ permute_cv_test <- function(log2counts,
     }
   }
 
-  permuted_data <- Humanzee::permute_cells(log2counts = log2counts,
+  permuted_data <- permute_cells(log2counts = log2counts,
                                   grouping_vector = grouping_vector,
                                   number_permute = number_permute,
                                   subset_matrix = subset_matrix)
