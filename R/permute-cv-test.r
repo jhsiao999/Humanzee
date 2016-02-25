@@ -18,7 +18,7 @@
 #'
 permute_cv_test <- function(log2counts, 
                             grouping_vector, 
-                            anno, n
+                            anno, 
                             number_permute,
                             subset_matrix = NULL,
                             output_rda = FALSE,
