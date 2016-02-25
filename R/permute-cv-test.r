@@ -91,9 +91,7 @@ save(permuted_distance,
      file = "permuted-distance.rda")
 }
 if (output_rda == FALSE) {
-  return(list(permuted_data = permuted_data,
-              permuted_cv_adj = permuted_cv_adj,
-              permuted_distance = permuted_distance$mad))
+  return(list(permuted_distance = permuted_distance$mad))
 }
 
 }
