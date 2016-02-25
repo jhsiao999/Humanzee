@@ -34,7 +34,7 @@ permute_cv_test <- function(log2counts,
     }
   }
 
-  permuted_data <- permute_cells(log2counts = log2counts,
+  permuted_data <- Humanzee::permute_cells(log2counts = log2counts,
                                   grouping_vector = grouping_vector,
                                   number_permute = number_permute,
                                   subset_matrix = subset_matrix)
@@ -43,10 +43,10 @@ permute_cv_test <- function(log2counts,
   # no parallelization
   if(do_parallel == FALSE) {
   permuted_cv_adj <- lapply(permuted_data, function(per_data) {
-    perm_cv <- compute_cv(log2counts = per_data,
+    perm_cv <- Humanzee::compute_cv(log2counts = per_data,
                           grouping_vector = grouping_vector)
 
-    perm_cv_adj <- normalize_cv(group_cv = perm_cv,
+    perm_cv_adj <- Humanzee::normalize_cv(group_cv = perm_cv,
                                 log2counts = per_data,
                                 anno = anno)
 
@@ -63,7 +63,7 @@ permute_cv_test <- function(log2counts,
 
     permuted_cv_adj <- foreach(ind_data = 1:number_permute) %dopar% {
 
-      per_data <- permuted_data[[ind_data]]
+      per_data <- Humanzee::permuted_data[[ind_data]]
       perm_cv <- Humanzee::compute_cv(log2counts = per_data,
                                       grouping_vector = grouping_vector)
 
